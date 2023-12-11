@@ -24,15 +24,16 @@ class UserService {
   }
 
   update(data) {
-    return apiClient.patch(this.endPoint + '/' + data.id, data);
+    return async () =>
+      await apiClient.patch(this.endPoint + '/' + data.id, data);
   }
 
   delete(id) {
-    return apiClient.delete(this.endPoint + '/', id);
+    return async () => await apiClient.delete(this.endPoint + '/', id);
   }
 
   create(data) {
-    return apiClient.post(this.endPoint + '/', data);
+    return async () => await apiClient.post(this.endPoint + '/', data);
   }
 }
 

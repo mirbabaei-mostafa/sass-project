@@ -1,9 +1,85 @@
 // Variables
-@import "variables";
+@import 'variables';
 
 // Layout
-@import "base";
+@import 'base';
 
 // Components
 
-
+.header {
+  @include dis_flex_center;
+  width: 100%;
+  height: 40px;
+  justify-content: space-between;
+  gap: 30px;
+  .logo {
+    font: bold 32px Ubuntu;
+    @include dis_flex_start;
+  }
+  .navbar {
+    @include dis_flex_end;
+    gap: 20px;
+    justify-content: space-between;
+  }
+}
+.loading {
+  color: #a87300;
+  font: bold 15px Ubuntu;
+}
+.warning {
+  color: #a80000;
+  font: bold 15px Ubuntu;
+}
+.grid {
+  @include dis_flex_start;
+  flex-direction: column;
+  margin-top: 15px;
+  .gridHeader {
+    @include dis_flex_center;
+    flex-direction: row;
+    background-color: $grid_header_bg;
+    width: 100%;
+    justify-content: space-between;
+    .gridHeaderTitle {
+      align-items: flex-start;
+      color: #fff;
+      padding: 8px;
+      font: bold 13px Ubuntu;
+    }
+    .gridHeaderAction {
+      align-items: center;
+      color: #fff;
+      padding: 8px;
+      font: bold 13px Ubuntu;
+      width: 140px;
+    }
+  }
+  .gridRows {
+    @include dis_flex_center;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    .gridRowsTitleOdd {
+      align-items: flex-start;
+      padding: 8px;
+      background-color: $grid_odd_bg;
+    }
+    .gridRowsActionOdd {
+      align-items: center;
+      padding: 8px;
+      width: 140px;
+      background-color: $grid_odd_bg;
+    }
+    .gridRowsTitleEven {
+      align-items: flex-start;
+      padding: 8px;
+      background-color: $grid_odd_bg;
+    }
+    .gridRowsActionEven {
+      align-items: center;
+      padding: 8px;
+      width: 140px;
+      background-color: $grid_odd_bg;
+    }
+  }
+}
