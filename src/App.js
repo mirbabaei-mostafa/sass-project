@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import userService from "./services/UserService";
+import { CanceledError } from "axios";
+import "./styles/index.scss";
 
 function App() {
+  const [isLoading, setLoading] = useState(false);
+  const [posts, setPost] = useState([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    setLoading(true);
+    const { request, cancel } = userService.getAll();
+    request
+      .then((res) => {
+        setPost(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        if (err instanceof CanceledError) return;
+        setError(err.message);
+        setLoading(false);
+      });
+    return () => cancel();
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {posts.map((post, i) => {
+        return (
+          <div key={i}>
+            <h1>{post.title}</h1>
+          </div>
+        );
+      })}
     </div>
   );
 }
