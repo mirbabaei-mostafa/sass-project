@@ -2,5 +2,9 @@
   "MyBlog": "Mein Blog",
   "PostTitle": "Der Titel des Beitrags",
   "Action": "Action",
-  "Loading": "Wird geladen ..."
+  "Loading": "Wird geladen ...",
+  "View": "Anshauen",
+  "Edit": "Bearbeiten",
+  "Delete": "Löschen",
+  "NewPost": "Neuer Beitrag"
 }

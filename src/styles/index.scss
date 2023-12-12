@@ -1,8 +1,8 @@
 // Variables
-@import 'variables';
+@import "variables";
 
 // Layout
-@import 'base';
+@import "base";
 
 // Components
 
@@ -45,41 +45,41 @@
       color: #fff;
       padding: 8px;
       font: bold 13px Ubuntu;
+      flex-grow: 0;
     }
     .gridHeaderAction {
       align-items: center;
       color: #fff;
       padding: 8px;
       font: bold 13px Ubuntu;
-      width: 140px;
+      flex-basis: 140px;
     }
   }
-  .gridRows {
-    @include dis_flex_center;
+  .gridRowsOdd {
+    @include dis_flex_start;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    .gridRowsTitleOdd {
-      align-items: flex-start;
-      padding: 8px;
-      background-color: $grid_odd_bg;
-    }
-    .gridRowsActionOdd {
-      align-items: center;
-      padding: 8px;
-      width: 140px;
-      background-color: $grid_odd_bg;
-    }
-    .gridRowsTitleEven {
-      align-items: flex-start;
-      padding: 8px;
-      background-color: $grid_odd_bg;
-    }
-    .gridRowsActionEven {
-      align-items: center;
-      padding: 8px;
-      width: 140px;
-      background-color: $grid_odd_bg;
-    }
+    background-color: $grid_odd_bg;
+    font: normal 13px Roboto;
+  }
+  .gridRowsEven {
+    @include dis_flex_start;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    background-color: $grid_even_bg;
+    font: normal 13px Roboto;
+  }
+  .gridRowsTitle {
+    align-items: flex-start;
+    padding: 8px;
+    flex-grow: 0;
+  }
+  .gridRowsAction {
+    align-items: center;
+    padding: 8px;
+    width: 140px;
+    flex-basis: 180px;
   }
 }

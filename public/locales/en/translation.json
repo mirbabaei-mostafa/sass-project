@@ -2,5 +2,9 @@
   "MyBlog": "My Blog",
   "PostTitle": "Post Title",
   "Action": "Action",
-  "Loading": "Loading ..."
+  "Loading": "Loading ...",
+  "View": "View",
+  "Edit": "Edit",
+  "Delete": "Delete",
+  "NewPost": "New Post"
 }

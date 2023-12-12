@@ -1,0 +1,10 @@
+.inputForm {
+  @include dis_flex_center;
+  flex-direction: row;
+}
+.inputFormRow {
+  @include dis_flex_center;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}

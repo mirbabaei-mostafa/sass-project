@@ -1,17 +1,19 @@
-import { lazy, useEffect, useState } from 'react';
-import userService from './services/UserService';
-import { CanceledError } from 'axios';
-import './styles/index.scss';
-import { useTranslation } from 'react-i18next';
+import { lazy, useEffect, useState } from "react";
+import "./styles/index.scss";
+import { useTranslation } from "react-i18next";
+import userService from "./services/UserService";
+import { CanceledError } from "axios";
 
-const Header = lazy(() => import('./component/Header'));
+const Header = lazy(() => import("./component/Header"));
+const Posts = lazy(() => import("./component/Posts"));
+const NewPost = lazy(() => import("./component/NewPost"));
 
 function App() {
   const { t } = useTranslation();
   const [isLoading, setLoading] = useState(false);
-  const [rows, setRows] = useState(false);
   const [posts, setPost] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+  const [addNewPost, setPostStatus] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -32,27 +34,10 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <div className="grid">
-        <div className="gridHeader">
-          <div className="gridHeaderTitle">{t('PostTitle')}</div>
-          <div className="gridHeaderAction">{t('Action')}</div>
-        </div>
-        {isLoading && <div className="loading">{t('Loading')}</div>}
-        {error && <div className="warning">{t('Loading')}</div>}
-        {posts.map((post, i) => {
-          // () => setRows(!rows);
-          return (
-            <div key={i}>
-              <div className={rows ? 'gridRowsTitleEven' : 'gridRowsTitleOdd'}>
-                {post.title}
-              </div>
-              <div
-                className={rows ? 'gridRowsTitleEven' : 'gridRowsTitleOdd'}
-              ></div>
-            </div>
-          );
-        })}
-      </div>
+      {isLoading && <div className="loading">{t("Loading")}</div>}
+      {error && <div className="warning">{t("Loading")}</div>}
+      {addNewPost && <NewPost />}
+      <Posts posts={posts} />
     </div>
   );
 }
